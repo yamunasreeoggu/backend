@@ -21,6 +21,8 @@ pipeline {
 
     stage('Unit Test') {
       steps {
+      // Ideally we should run Unit Test , but in this practice we skipped it. Below is the command to run the unit test
+      // sh 'npm test'
         echo 'CI'
       }
     }
