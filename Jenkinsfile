@@ -10,6 +10,7 @@ pipeline {
     stage('Download Dependencies') {
       steps {
         sh 'npm install'
+        sh 'env'
       }
     }
 
@@ -17,7 +18,7 @@ pipeline {
       when {
         allOf {
         branch 'main'
-        expression { env.TAG_NAME != env.BRANCH_NAME }
+        expression { env.TAG_NAME != env.GIT_BRANCH }
         }
       }
       steps {
@@ -27,9 +28,7 @@ pipeline {
 
     stage('Unit Test') {
       when {
-        allOf {
         branch 'main'
-        }
       }
       steps {
       // Ideally we should run Unit Test , but in this practice we skipped it. Below is the command to run the unit test
