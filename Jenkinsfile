@@ -40,7 +40,7 @@ pipeline {
 
     stage('Release') {
       when {
-        expression { env.TAG_NAME == env.BRANCH_NAME }
+        expression { env.TAG_NAME ==~ ".*" }
       }
       steps {
         echo 'CI'
