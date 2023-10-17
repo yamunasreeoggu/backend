@@ -7,11 +7,11 @@ pipeline {
 
   stages {
 
-    //stage('Download Dependencies') {
-      //steps {
-        //sh 'npm install'
-      //}
-    //}
+    stage('Download Dependencies') {
+      steps {
+        sh 'npm install'
+      }
+    }
 
     stage('Code Quality') {
       when {
