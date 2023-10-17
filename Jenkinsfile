@@ -10,14 +10,15 @@ pipeline {
     stage('Download Dependencies') {
       steps {
         sh 'npm install'
+        sh 'env'
       }
     }
 
     stage('Code Quality') {
       when {
         allOf {
-        branch 'main'
-        expression { env.TAG_NAME != env.BRANCH_NAME }
+        expression { env.GIT_BRANCH == "origin/main" }
+        expression { env.TAG_NAME != env.GIT_BRANCH }
         }
       }
       steps {
