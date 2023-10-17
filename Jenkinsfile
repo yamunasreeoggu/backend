@@ -17,7 +17,7 @@ pipeline {
     stage('Code Quality') {
       when {
         allOf {
-        expression { env.GIT_BRANCH == "origin/main" }
+        branch 'main'
         expression { env.TAG_NAME != env.GIT_BRANCH }
         }
       }
@@ -28,9 +28,7 @@ pipeline {
 
     stage('Unit Test') {
       when {
-        allOf {
-          expression { env.GIT_BRANCH == "origin/main" }
-        }
+        branch 'main'
       }
       steps {
       // Ideally we should run Unit Test , but in this practice we skipped it. Below is the command to run the unit test
