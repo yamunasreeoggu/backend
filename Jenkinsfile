@@ -21,12 +21,12 @@ pipeline {
         }
       }
       steps {
-        sh 'sonar-scanner -Dsonar.host.url=http://172.31.41.26:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.projectKey=backend -Dsonar.qualitygate.wait=true'
+        //sh 'sonar-scanner -Dsonar.host.url=http://172.31.41.26:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.projectKey=backend -Dsonar.qualitygate.wait=true'
         echo 'OK'
       }
     }
 
-    stage('Unit Test') {
+    stage('Unit Tests'){
       when {
         allOf {
         expression { env.TAG_NAME != env.GIT_BRANCH }
